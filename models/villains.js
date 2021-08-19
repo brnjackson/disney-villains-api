@@ -4,8 +4,6 @@ const villains = (connection, Sequelize) => {
     name: { type: Sequelize.STRING },
     movie: { type: Sequelize.STRING },
     slug: { type: Sequelize.STRING },
-    createdAt: { type: Sequelize.DATE },
-    updatedAt: { type: Sequelize.DATE }
   })
 }
 

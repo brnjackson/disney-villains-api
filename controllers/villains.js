@@ -29,7 +29,7 @@ const postRequest = async (req, res) => {
 
   const newVillain = await models.Villains.create({ name, movie, slug })
 
-  res.send(newVillain)
+  res.send(newVillain, 'createdAt', 'updatedAt')
 }
 const errorAll = (req, res) => {
   return res.status(404).send('OOPS')
