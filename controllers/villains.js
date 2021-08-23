@@ -13,7 +13,7 @@ const displayAll = async (req, res) => {
 
 const returnBySlug = async (req, res) => {
   const { slug } = req.params
-  const returnBySlug = await models.Villains.findOne({ where: { slug } })
+  const returnBySlug = await models.Villains.findAll({ where: { slug } })
 
   return res.send(returnBySlug)
 }
@@ -29,7 +29,7 @@ const postRequest = async (req, res) => {
 
   const newVillain = await models.Villains.create({ name, movie, slug })
 
-  res.send(newVillain, 'createdAt', )
+  res.send(newVillain)
 }
 const errorAll = (req, res) => {
   return res.status(404).send('OOPS')
