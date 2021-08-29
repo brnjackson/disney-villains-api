@@ -1,5 +1,11 @@
 CREATE DATABASE disney;
 
+DROP USER IF exists 'cruellaDevil'@'localhost';
+CREATE USER 'cruellaDevil'@'localhost' identified BY 'd!sNeY';
+
+GRANT ALL PRIVILEGES ON disney.* to 'cruellaDevil'@'localhost';
+FLUSH PRIVILEGES;
+
 USE disney;
 
 CREATE TABLE villains (
