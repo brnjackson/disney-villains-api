@@ -2,8 +2,7 @@
 const express = require('express')
 const app = express()
 const {
-  serverSetup, displayAll, returnBySlug,
-  postRequest, errorAll
+  serverSetup, displayAll, returnBySlug, errorAll, saveNewVillain
 } = require('./controllers/villains')
 
 
@@ -15,7 +14,7 @@ app.get('/villains', displayAll)
 
 app.get('/villains/:slug', returnBySlug)
 
-app.post('/villains', postRequest)
+app.post('/villains', saveNewVillain)
 
 app.all('*', errorAll)
 

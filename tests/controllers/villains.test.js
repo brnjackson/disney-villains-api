@@ -16,14 +16,14 @@
      let stubStatusSend
      let stubStatus
      let response
-     let stubStatusDotSend
+     
      before(() => {
          sandbox = sinon.createSandbox()
          stubFindOne = sandbox.stub(models.Villains, 'findOne')
          stubSend = sandbox.stub()
          stubStatusSend = sandbox.stub()
          stubStatus = sandbox.stub()
-         stubStatusDotSend = sandbox.stub()
+         
 
          response = {
              send: stubSend,
@@ -39,7 +39,7 @@
  })
 
 
- describe('teams controllers tests', () => {
+ describe('villains controllers tests', () => {
     describe('displayAll', () => {
       it('retrieves and displays all villains from disney db using res.send method', async () => {
         // first argument
