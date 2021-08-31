@@ -31,7 +31,7 @@ const saveNewVillain = async (req, res) => {
   if (!name || !movie || !slug) {
     return res
       .status(400)
-      .send('missing fields')
+      .send('missing fields. name, movie and slug required.')
   }
 
   const newVillain = await models.Villains.create({ name, movie, slug })

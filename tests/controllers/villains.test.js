@@ -16,7 +16,6 @@
      let stubStatusSend
      let stubStatus
      let response
-     let stubSendStatus
      let stubStatusDotSend
      before(() => {
          sandbox = sinon.createSandbox()
