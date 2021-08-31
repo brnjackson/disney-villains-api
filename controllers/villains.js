@@ -4,7 +4,6 @@ const models = require('../models')
 const serverSetup = (req, res) => {
   return res.send('Get ready to meet our villains!')
 }
-
 const displayAll = async (req, res) => {
   const villains = await models.Villains.findAll()
 
@@ -12,13 +11,21 @@ const displayAll = async (req, res) => {
 }
 
 const returnBySlug = async (req, res) => {
-  const { slug } = req.params
-  const returnBySlug = await models.Villains.findAll({ where: { slug } })
+  try { 
+        const { slug } = req.params
 
-  return res.send(returnBySlug)
+  const matchingSlug = await models.Villains.findOne({ where: { slug } })
+
+  return matchingSlug
+    ? res.send(matchingSlug)
+    : res.sendStatus(404)
+} catch (error) {
+    return res.status(500).send('Unable to retrieve villain, please try again')
+}
 }
 
-const postRequest = async (req, res) => {
+
+const saveNewVillain = async (req, res) => {
   const { name, movie, slug } = req.body
 
   if (!name || !movie || !slug) {
@@ -29,7 +36,7 @@ const postRequest = async (req, res) => {
 
   const newVillain = await models.Villains.create({ name, movie, slug })
 
-  res.send(newVillain)
+  return res.status(201).send(newVillain)
 }
 const errorAll = (req, res) => {
   return res.status(404).send('OOPS')
@@ -37,5 +44,5 @@ const errorAll = (req, res) => {
 
 
 module.exports = {
-  serverSetup, displayAll, returnBySlug, postRequest, errorAll
+  serverSetup, displayAll, returnBySlug, saveNewVillain, errorAll
 }
